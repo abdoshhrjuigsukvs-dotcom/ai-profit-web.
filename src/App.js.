@@ -1,0 +1,43 @@
+import React, { useState } from 'react';
+import './App.css';
+
+function App() {
+  const [points, setPoints] = useState(0);
+  const [status, setStatus] = useState("مستعد للربح؟");
+
+  const showAd = () => {
+    setStatus("جاري تحميل الإعلان...");
+    // هنا قمنا بربط رقمك الخاص 60907
+    console.log("Loading Ads for Game ID: 60907");
+    
+    setTimeout(() => {
+      setPoints(points + 10);
+      setStatus("مبروك! ربحت 10 نقاط");
+    }, 2000);
+  };
+
+  return (
+    <div style={{ backgroundColor: '#121212', color: 'white', minHeight: '100vh', padding: '20px', textAlign: 'center', fontFamily: 'Arial' }}>
+      <header style={{ display: 'flex', justifyContent: 'space-between', padding: '10px', borderBottom: '1px solid #333' }}>
+        <h2 style={{ color: '#00d4ff' }}>AI Profit Pro</h2>
+        <div style={{ background: '#333', padding: '5px 15px', borderRadius: '20px', color: '#ffd700' }}>
+           نقاطك: {points} 🪙
+        </div>
+      </header>
+
+      <div style={{ marginTop: '100px', padding: '30px', background: '#1e1e1e', borderRadius: '15px', boxShadow: '0 4px 15px rgba(0,0,0,0.5)' }}>
+        <h3>{status}</h3>
+        <p>شاهد الإعلانات لتفعيل ميزات الذكاء الاصطناعي</p>
+        <button 
+          onClick={showAd}
+          style={{ backgroundColor: '#00d4ff', color: 'black', border: 'none', padding: '15px 30px', borderRadius: '10px', fontSize: '18px', fontWeight: 'bold', cursor: 'pointer' }}
+        >
+          مشاهدة إعلان (ربح نقاط)
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export default App;
+
